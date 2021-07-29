@@ -1,6 +1,9 @@
+
 describe('battle game user interactions', () => {
 
   it('starts a new game (it does loads of stuff in the same it unfortuanelty)', () => {
+
+
     cy.visit('/')
     cy.get("#p1-name").type('Colin');
     cy.get("#p2-name").type('Lottie');
@@ -29,13 +32,17 @@ describe('battle game user interactions', () => {
     cy.get("#attack-button").click();
     cy.get('#turn-tracker').should('contain','Colin')
     cy.get("#attack-log").should('contain','Lottie attacks Colin');
-
     // ***** <NEW IT> wish they could be seperate its ******
     // In separate IT change 17 to 19. 
     for (let i = 0; i < 17; i++){
       cy.get("#attack-button").click();
     }
-    cy.get('#game-status').should('contain','The game is in progress: false')        
+    cy.get('#game-status').should('contain','Colin has beaten Lottie') 
+    
+    
+    // ***** <NEW IT> wish they could be seperate its ******
+
+
   });
 
 

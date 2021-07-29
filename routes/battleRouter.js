@@ -10,7 +10,6 @@ router.post('/',(req,res) => {
     req.app.locals.game = game
   } 
   else req.app.locals.game.attack()
-  console.log(req.app)
 
   res.render('battle.ejs', {
     p1Name: req.app.locals.game.p1.name,

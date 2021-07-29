@@ -11,7 +11,7 @@ class Game{
         this.attackLog = [];
         // whoevers in pos 0 its their turn
         this.turnTracker = []
-        this.gameStatus = true;
+        this.gameStatus = 'The battle is underway';
     }
 
     start (p1,p2) {
@@ -24,27 +24,15 @@ class Game{
     }
 
     attack () {
-        this.turnTracker[1].hp -= 10
+        // this.turnTracker[1].hp -= Math.ceil(Math.random()*10)
+        this.turnTracker[1].hp -=10
         this.attackLog.push(`${this.turnTracker[0].name} attacks ${this.turnTracker[1].name}`)
-       
-
-        console.log(`TurnTrackerHP: ${this.turnTracker[1].hp}`)
-
-        if (this.turnTracker[1].hp < 1) {
-            console.log(`TurnTrackerHP: ${this.turnTracker[1].hp}`)
-            console.log('Lose')
-            return this.lose()
-        }
-
-        //Happen at end
-         this.switchTurn()
-
+        // If nobody loses, switch turns
+        this.turnTracker[1].hp < 1 ? this.lose() : this.switchTurn()
     }   
 
     lose () {
-        console.log('You lose, you get nothing!')
-        this.gameStatus = false;
-        return `${this.turnTracker[0]} has beaten ${this.turnTracker[1]}`
+        this.gameStatus = `${this.turnTracker[0].name} has beaten ${this.turnTracker[1].name}`;
     }
 
     switchTurn() {

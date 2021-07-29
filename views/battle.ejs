@@ -1,5 +1,5 @@
 <h1 >Battle page</h1>
-<h2> <%= gameStatus %> </h2>
+<h3> The game is in progress: <%= gameStatus %> </h3>
 <div>
     <p id = p1-display-name>Player 1: <%= p1Name %></p> 
     <p id = p1-hp><%= `Player 1 hp: ${p1hp}` %></p>
@@ -11,7 +11,7 @@
 </div>
 <div>
 
-<form action="/battle-attack" method="post">  
+<form action="/battle" method="post">  
     <input type="submit" id = "attack-button" value="attack!">
 </form> 
 

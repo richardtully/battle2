@@ -2,11 +2,11 @@ class Game{
     constructor(){
         this.p1 = {
             name: '',
-            hp: 100
+            hp: 1
         };
         this.p2 = {
             name: '',
-            hp: 100
+            hp: 1
         };
         this.attackLog = [];
         // whoevers in pos 0 its their turn

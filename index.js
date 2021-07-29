@@ -16,11 +16,14 @@ app.get('/', (req, res) => {
 
 app.post('/battle',(req,res) => {
 
-  game.start(req.body.p1Name, req.body.p2Name);
-  console.log('here i am')
-  console.log(game.turnTracker)
-  console.log(game.turnTracker[0])
-  console.log(game.turnTracker[0].name)
+  
+  if (req.body.p1Name) {
+    console.log('game is now starting*************')
+    game.start(req.body.p1Name, req.body.p2Name);
+  } else {
+    console.log('game is attacking*****************')
+    game.attack()
+  }
 
   res.render('battle.ejs', {
     p1Name: game.p1.name,
@@ -29,21 +32,13 @@ app.post('/battle',(req,res) => {
     p2hp: game.p2.hp,
     attackLog: game.attackLog,
     turnName: game.turnTracker[0].name,
-    gameStatus: `The game is in progress: ${game.gameStatus}`
+    gameStatus: game.gameStatus
   })
 })
-// <p id= turn-tracker> <%= turnName %> you must click attack now </p>
-app.post('/battle-attack',(req,res) => {
-  //Other res methods - res.send?
-  //console.log('battle attack page')
-  game.attack()
-  // console.log(game.p1.name)
-  // console.log(game.p2.name)
-  // console.log(game.attackLog)
 
-  // if (game.gameStatus === false) {
-  //   lose: game.lose
-  // };
+
+app.post('/battle-attack',(req,res) => {
+  
 
   res.render('battle.ejs', {
     p1Name: game.p1.name,
@@ -51,8 +46,7 @@ app.post('/battle-attack',(req,res) => {
     p1hp: game.p1.hp,
     p2hp: game.p2.hp,
     attackLog: game.attackLog,
-    turnName: game.turnTracker[0].name,
-    gameStatus: `The game is in progress: ${game.gameStatus.toString()}`
+    turnName: game.turnTracker[0].name
   })
 })
 

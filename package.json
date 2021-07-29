@@ -4,7 +4,8 @@
   "description": "Implement the battle project",
   "main": "index.js",
   "scripts": {
-    "test": "jasmine"
+    "test": "jasmine",
+    "start": "DEBUG=express:* npx nodemon index.js"
   },
   "repository": {
     "type": "git",

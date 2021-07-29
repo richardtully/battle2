@@ -35,7 +35,7 @@ describe('battle game user interactions', () => {
     for (let i = 0; i < 17; i++){
       cy.get("#attack-button").click();
     }
-    cy.get('#lose-message').should('contain','Colin has beaten Lottie')        
+    cy.get('#game-status').should('contain','The game is in progress: false')        
   });
 
 
